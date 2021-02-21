@@ -30,7 +30,7 @@ y_val = y_train[:10000]
 partial_y_train = y_train[10000:]
 
 model.compile(optimizer = 'rmsprop', loss = 'binary_crossentropy', metrics = ['acc'])
-history = model.fit(partial_x_train, partial_y_train, epochs = 20, batch_size = 512, validation_data = (x_val, y_val))
+history = model.fit(partial_x_train, partial_y_train, epochs = 4, batch_size = 512, validation_data = (x_val, y_val))
 
 history_dict = history.history
 loss_values = history_dict['loss']
@@ -58,3 +58,6 @@ plt.ylabel('Accuracy')
 plt.legend()
 
 plt.show()
+
+results = model.evaluate(x_test, y_test)
+print(results)
